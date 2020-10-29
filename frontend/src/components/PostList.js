@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import Post from 'Post';
+import Post from './Post';
 import Axios from 'axios';
-
+import { Card } from 'antd';
 
 const apiUrl = 'http://localhost:8000/api/posts/'
 
@@ -23,9 +23,8 @@ function PostList() {
 
     return (
         <div>
-            <h1>hello, hojoon</h1>
-            {postList.map(post => 
-                <Post post={post} key={post.id}/>
+            {postList.map(post =>
+                <Post post={post} key={post.id} />
             )}
         </div>
     )
