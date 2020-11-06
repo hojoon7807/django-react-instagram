@@ -4,10 +4,13 @@ import Root from 'pages';
 import './index.css';
 import { BrowserRouter } from 'react-router-dom';
 import 'antd/dist/antd.css';
+import { AppProvider } from 'Store';
 
 ReactDOM.render(
   <BrowserRouter >
-    <Root />
+    <AppProvider>
+      <Root />
+    </AppProvider>
   </BrowserRouter>
   , document.getElementById('root')
 );
