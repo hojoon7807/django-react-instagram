@@ -1,15 +1,19 @@
 import Axios from 'axios';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { Card, Form, Input, Button, notification } from 'antd';
 import { SmileOutlined, FrownOutlined } from '@ant-design/icons';
 import { useAppContext, setToken } from 'Store';
 
 export default function Login() {
     const { dispatch } = useAppContext();
+    const location = useLocation();
     const history = useHistory();
     const [fieldErrors, setFieldErrors] = useState({});
     // const [jwtToken, setJwtToken] = useLocalStorage('jwtToken', ''); // key, initialvalue
+    console.log(location.state);
+    console.log(location);
+    const { from: loginRedirectUrl } = location.state || { from: { pathname: '/' } };
     const onFinish = values => {
         async function axios() {
             const { username, password } = values;
@@ -26,7 +30,7 @@ export default function Login() {
                     message: "로그인 성공",
                     icon: <SmileOutlined style={{ color: "#108ee9" }} />
                 })
-                //history.push('/accounts/login/');
+                history.push(loginRedirectUrl);
             }
             catch (error) {
                 if (error.response) {
@@ -68,7 +72,7 @@ export default function Login() {
                     label="Username"
                     name="username"
                     rules={[{ required: true, message: 'Please input your username!' },
-                    { min: 5, message: '5글자 이상 입력해주세요.' }
+                    { min: 4, message: '4글자 이상 입력해주세요.' }
                     ]}
                     hasFeedback
                     {...fieldErrors.username}

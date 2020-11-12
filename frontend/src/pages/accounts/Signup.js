@@ -1,5 +1,5 @@
 import Axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import {useHistory} from 'react-router-dom';
 import {Form,Input,Button, notification} from 'antd';
 import {SmileOutlined, FrownOutlined} from '@ant-design/icons';

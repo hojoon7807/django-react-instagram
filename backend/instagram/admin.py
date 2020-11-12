@@ -6,7 +6,7 @@ from .models import Post, Comment, Tag
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ['photo_tag', 'caption']
+    list_display = ['photo_tag', 'caption', 'create_at', 'update_at']
     list_display_links = ['caption']
 
     def photo_tag(self, post):
